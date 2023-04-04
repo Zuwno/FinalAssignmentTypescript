@@ -1,0 +1,21 @@
+{
+  "products": [
+    {
+      "name": "Product 1 ",
+      "price": "1000",
+      "desc": "Mô tả 1",
+      "category": "Danh mục 1",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Danh mục 1",
+      "id": 1
+    },
+    {
+      "name": "Danh mục 2",
+      "id": 2
+    }
+  ]
+}
