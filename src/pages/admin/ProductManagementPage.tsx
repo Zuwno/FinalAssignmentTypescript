@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Button } from 'antd';
@@ -49,8 +50,9 @@ const  ProductManagementPage = (props) => {
       title: 'Image',
       dataIndex: 'image',
       key: 'image',
-      render: (img) => <img src={img} alt="" />, 
+      render: (image) => <img src={image} alt="" />,
     },
+    
     {
       title: 'Action',
       key: 'action',
@@ -70,7 +72,7 @@ const  ProductManagementPage = (props) => {
       price: item.price,
       desc: item.desc,
       category:item.category,
-      image:item.image
+      image: item.image.file.thumbUrl
     }
   }))
   return <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />;

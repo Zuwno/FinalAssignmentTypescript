@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router'
 import HomePage from './pages/HomePage'
 import Dashboard from './pages/admin/Dashboard'
-import { addProduct, updateProduct, getAllProduct, addCategory, updateCategory, getAllCategory } from './api/product'
+import { addProduct, updateProduct, getAllProduct, addCategory, updateCategory, getAllCategory, addUser } from './api/product'
 import ProductPage from './pages/ProductsPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import ProductManagementPage from './pages/admin/ProductManagementPage'
@@ -15,11 +15,14 @@ import AdminLayout from './pages/layout/AdminLayout'
 import CategoryManagementPage from './pages/admin/CategoryManagementPage'
 import AddCategoryPage from './pages/admin/AddCategory'
 import UpdateCategoryPage from './pages/admin/UpdateCategory'
+import SigninPage from './pages/SigninPage'
+import SignupPage from './pages/SignupPage'
 
 function App() {
   
   const [products, setProducts] = useState([])
   const [categorys, setCategorys] = useState([])
+  const [users, setUsers] = useState([])
 
    useEffect(() => 
    {
@@ -33,6 +36,12 @@ function App() {
     fetch(`http://localhost:3000/categories`)
     .then(response => response.json())
     .then(data => setCategorys(data))  
+   },[])
+   useEffect(() => 
+   {
+    fetch(`http://localhost:3000/user`)
+    .then(response => response.json())
+    .then(data => setUsers(data))  
    },[])
 
    const onHandleRemove = (id) => {
@@ -58,11 +67,18 @@ function App() {
   const oneHandleAdd = (product) => 
   {
     addProduct(product)
+    alert("Thêm mới Product thành công")
   }
 
   const oneHandleAddCategory = (category) => 
   {
     addCategory(category)
+    alert("Thêm mới Category thành công")
+  }
+  const oneHandleAddUser = (user) => 
+  {
+    addUser(user)
+    alert("Đăng ký thành công")
   }
 
   const onHandleUpdate = (product) => { 
@@ -91,7 +107,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path='products' >
               <Route index element={<ProductManagementPage products={products} categorys={categorys} onRemove={onHandleRemove} />} />
-              <Route path='add' element={<AddProductPage onAdd={oneHandleAdd} />} />
+              <Route path='add' element={<AddProductPage categorys={categorys}  onAdd={oneHandleAdd} />} />
               <Route path=':id/update' element={<UpdateProductPage products={products} categorys={categorys} onUpdate={onHandleUpdate} />} />
             </Route>
             <Route path='categories' >
@@ -99,7 +115,14 @@ function App() {
               <Route path='add' element={<AddCategoryPage onAdd={oneHandleAddCategory} />} />
               <Route path=':id/update' element={<UpdateCategoryPage categorys={categorys} onUpdate={onHandleUpdateCategory} />} />
             </Route>
+            
           </Route>
+          <Route path='signin' >
+              <Route index element={<SigninPage users={users}  />} />
+            </Route>
+            <Route path='signup' >
+              <Route index element={<SignupPage onAdd={oneHandleAddUser} />} />
+            </Route>
 
 
 {/* <Route path='/' element={<HomePage/>}/>

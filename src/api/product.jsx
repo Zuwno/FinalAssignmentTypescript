@@ -39,6 +39,9 @@ const deleteCategory = (id) => {
     return instance.delete('/categories/' + id);
     
 }
+const addUser = (user) => {
+    return instance.post('/user', user);
+}
 
 export { getAllProduct, getOneProduct, addProduct, updateProduct, 
-    deleteProduct, addCategory, updateCategory, deleteCategory , getAllCategory, getOneCategory}
+    deleteProduct, addCategory, updateCategory, deleteCategory , getAllCategory, getOneCategory, addUser}

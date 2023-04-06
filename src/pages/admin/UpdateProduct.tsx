@@ -99,18 +99,23 @@ const UpdateProductPage = (props) => {
 
     <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Vui lòng không để trống danh mục' }]} >
           <Select>
-            <Select.Option value="Danh mục 1">Danh mục 1</Select.Option>
+          <Select.Option value="Danh mục 1">Danh mục 1</Select.Option>
+            <Select.Option value="Danh mục 2">Danh mục 2</Select.Option>
+            <Select.Option value="Danh mục 3">Danh mục 3</Select.Option>
           </Select>
         </Form.Item>
 
-    <Form.Item label="Image" valuePropName="fileList" name="image">
-          <Upload action="/upload.do" listType="picture-card">
+        <Form.Item
+      label="Image"
+      name="image"
+    >
+       <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
           </Upload>
-        </Form.Item>
+    </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">
                         Update Product

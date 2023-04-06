@@ -76,7 +76,18 @@ const UpdateCategoryPage = (props) => {
     >
       <Input />
     </Form.Item>
-
+    <Form.Item
+      label="Image"
+      name="image"
+    >
+       <Upload action="/upload.do" listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
+    </Form.Item>
+    
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">
                         Update Category

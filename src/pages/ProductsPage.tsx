@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Card, Col, Row } from 'antd';
 
 const ProductPage = (props) => {
     interface check{
@@ -17,14 +19,26 @@ const ProductPage = (props) => {
   return (
     <div>
         <div>Product Page</div>
-<div> {props.products.map((item:check) => 
+<div> 
+<Row gutter={16}>
+   
+    
+  </Row>
+    {props.products.map((item:check) => 
 {
     return (
         <div key={item.id}>
-        <h2>{item.name}</h2>
-        <h2>{item.price}</h2>
-        <h2>{item.desc}</h2>
-        <h2>{item.category}</h2>
+        
+        <Link to={`/products/${item.id}`}>
+             <Col span={8}>
+      <Card title={item.name} bordered={false}>
+        <img src={item.image.file.thumbUrl} alt="" />
+      <h2>Price: {item.price}</h2>
+        <h2>Desc: {item.desc}</h2>
+        <h2>Category: {item.category}</h2>
+      </Card>
+    </Col>
+        </Link>
         </div>
         
     )
