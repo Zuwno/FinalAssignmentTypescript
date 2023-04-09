@@ -46,7 +46,10 @@ const  CategoryManagementPage = (props) => {
       name: item.name
     }
   }))
-  return <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />;
+  return <div>
+    <Button type="primary"><Link to={`/admin/categories/add`}>Thêm mới</Link></Button>
+    <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />;
+    </div>
 //   
 };
 
