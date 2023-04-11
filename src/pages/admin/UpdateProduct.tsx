@@ -98,10 +98,13 @@ const UpdateProductPage = (props) => {
     </Form.Item>
 
     <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Vui lòng không để trống danh mục' }]} >
-          <Select>
-          <Select.Option value="Danh mục 1">Danh mục 1</Select.Option>
-            <Select.Option value="Danh mục 2">Danh mục 2</Select.Option>
-            <Select.Option value="Danh mục 3">Danh mục 3</Select.Option>
+    <Select>
+            {props.categorys.map((item) => {
+              <Select.Option value={item.name}>{item.name}</Select.Option>;
+            })}
+            <Select.Option value="Danh muc 1">Danh muc 1</Select.Option>;
+
+            
           </Select>
         </Form.Item>
 

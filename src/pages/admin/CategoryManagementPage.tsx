@@ -29,6 +29,12 @@ const  CategoryManagementPage = (props) => {
       render: (text) => <a>{text}</a>,
     },
     {
+      title: 'Image',
+      dataIndex: 'image',
+      key: 'image',
+      render: (image) => <img src={image} alt="" />,
+    },
+    {
       title: 'Action',
       key: 'action',
       render: ( record) => (
@@ -43,7 +49,8 @@ const  CategoryManagementPage = (props) => {
   const data = props.categorys.map((item => {
     return {
       key: item.id,
-      name: item.name
+      name: item.name,
+      image: item.image.file.thumbUrl
     }
   }))
   return <div>
